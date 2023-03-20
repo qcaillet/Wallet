@@ -1,10 +1,10 @@
-import * as React from "react";
+import {useState} from "react";
 import { ThemeProvider } from "@emotion/react";
 import ThemeContext from "../contexts/ThemeContext";
 import { LOCAL_STORAGE_KEY, DARK_THEME, LIGHT_THEME } from "./Theme";
 
 function ThemeHandler(props) {
-  const [isDark, setDark] = React.useState(
+  const [isDark, setDark] = useState(
     localStorage.getItem(LOCAL_STORAGE_KEY) === "true"
   );
 
@@ -28,7 +28,8 @@ function ThemeHandler(props) {
 
   return (
     <ThemeContext.Provider value={ctxValue}>
-      <ThemeProvider theme={getTheme}>{props.children}</ThemeProvider>
+      <ThemeProvider theme={getTheme}>{props.children}
+      </ThemeProvider>
     </ThemeContext.Provider>
   );
 }
